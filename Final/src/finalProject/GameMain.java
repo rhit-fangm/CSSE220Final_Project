@@ -10,7 +10,7 @@ public class GameMain {
 		JFrame frame = new JFrame("Viewer");
 		
 		frame.setSize(1920, 1080);
-		//frame.pack(); // 1) compute preferred size
+		
 		frame.setLocationRelativeTo(null); // 2) center on screen
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
