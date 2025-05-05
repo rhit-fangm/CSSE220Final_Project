@@ -15,7 +15,7 @@ public class MenuPanels extends JPanel{
 private BufferedImage image;
 	
 	public MenuPanels() {
-		setPreferredSize(new Dimension(1920,1080));
+		setPreferredSize(new Dimension(1530,1080));
 		try {
 			image = ImageIO.read(new File("src/images/titlepage.png"));
 		} catch (IOException e) {
@@ -30,7 +30,6 @@ private BufferedImage image;
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(getGraphics());
 		if(image != null) {
-			
 			g.drawImage(image, 0, 0, this);
 		} else {
 			//setBackground(Color.RED);

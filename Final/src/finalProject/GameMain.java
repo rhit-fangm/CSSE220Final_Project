@@ -10,7 +10,7 @@ public class GameMain {
 	public static void createGUI() {
 		JFrame frame = new JFrame("Viewer");
 		frame.add(new MenuPanels());
-		frame.setSize(1920, 1080);
+		frame.setSize(1800, 1080);
 		frame.pack();
 		frame.setLocationRelativeTo(null); // 2) center on screen
 		
