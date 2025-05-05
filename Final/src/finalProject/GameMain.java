@@ -1,5 +1,6 @@
 package finalProject;
 // I want you to see that I have committed
+// I can see it
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
