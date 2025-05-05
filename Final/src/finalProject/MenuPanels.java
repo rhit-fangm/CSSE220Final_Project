@@ -8,56 +8,30 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.UnsupportedAudioFileException;
+
 import javax.swing.JPanel;
 
 public class MenuPanels extends JPanel{
 private BufferedImage image;
 	
 	public MenuPanels() {
-		setPreferredSize(new Dimension(300, 200));
+		setPreferredSize(new Dimension(1920,1080));
 		try {
-			image = ImageIO.read(new File("src/images/SquareFaces.png"));
+			image = ImageIO.read(new File("src/images/titlepage.png"));
 		} catch (IOException e) {
 			System.err.println("Caught: " + e.getMessage());
 			e.printStackTrace();
-			playSoundEffect();
 			image = null;
 		}
 	
 	}
 	
-	private void playSoundEffect() {
-		try {
-			AudioInputStream a = AudioSystem.getAudioInputStream(new File("src/audio/bugle_tune.wav"));
-			
-			Clip clip = AudioSystem.getClip();
-			
-			clip.open(a);
-			clip.start();
-			
-			
-		} catch (UnsupportedAudioFileException e) {
-			System.err.println("Caught: " + e.getMessage());
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.err.println("Caught: " + e.getMessage());
-			e.printStackTrace();
-		}
-		catch (Exception e) {
-			System.err.println("Caught: " + e.getMessage());
-		}
-	}
-	
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(getGraphics());
 		if(image != null) {
-			int x = (getWidth() - image.getWidth())/2;
-			int y = (getHeight() - image.getHeight())/2;
-			g.drawImage(image, x, y, this);
+			
+			g.drawImage(image, 0, 0, this);
 		} else {
 			//setBackground(Color.RED);
 			g.setColor(Color.BLACK);
