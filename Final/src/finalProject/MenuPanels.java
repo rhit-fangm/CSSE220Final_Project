@@ -16,9 +16,12 @@ import javax.swing.JPanel;
 public class MenuPanels extends JPanel{
 private BufferedImage image;
 private final JFrame frame;
+private boolean enterPressed;
 	
 	public MenuPanels(JFrame frame) {
 		this.frame = frame;
+		this.enterPressed = enterPressed;
+		enterPressed = false;
 		setPreferredSize(new Dimension(1530,1080));
 		try {
 			image = ImageIO.read(new File("src/images/titlepage.png"));
@@ -33,6 +36,7 @@ private final JFrame frame;
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
+						enterPressed = true;
 						image = ImageIO.read(new File("src/images/whitecar.png"));
 						repaint();
 					} catch (IOException e1) {
