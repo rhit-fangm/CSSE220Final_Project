@@ -17,7 +17,7 @@ public class GameMain {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		
+		// check pushing java file
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> createGUI());
