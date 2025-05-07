@@ -4,16 +4,21 @@ package finalProject;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+
+
 public class GameMain {
 	public static void createGUI() {
 		JFrame frame = new JFrame("Viewer");
+
 		frame.add(new MenuPanels());
 		frame.setSize(1920, 1080);
+
 		frame.pack();
 		frame.setLocationRelativeTo(null); // 2) center on screen
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
 		
 		
 	}
