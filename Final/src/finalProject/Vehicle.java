@@ -16,7 +16,7 @@ public class Vehicle extends JPanel{
 		this.y = y;
 		WIDTH = 0;
 		HEIGHT = 0;
-		changeVelocity(0);
+		velocity = 0;
 		angle = 0;
 	}
 
@@ -25,7 +25,7 @@ public class Vehicle extends JPanel{
 	}
 
 	public void changeVelocity(int velocity) {
-		this.velocity = velocity;
+		this.velocity += velocity;
 	}
 
 	public int getX() {
