@@ -2,6 +2,7 @@ package finalProject;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,10 +16,15 @@ public class Car extends Vehicle{
 	private int x,y;
 	private double angle;
 	private int velocity;
+	private int accel;
 	private int WIDTH,HEIGHT;
+	private int maxSpeed;
 	
 	public Car(int x, int y, int carNum) {
 		super(x, y);
+		maxSpeed = 14;
+		accel = 1;
+		angle = 90;
 		this.carNum = carNum;
 		switch(carNum) {
 			case 1: try {
@@ -64,9 +70,19 @@ public class Car extends Vehicle{
 			}
 			
 		}
+	
 		
 			
-		
+		public int getAccel() {
+			return accel;
+		}
+
+		public int getMaxSpeed() {
+			return maxSpeed;
+		}
+		public void boost(int boost) {
+			velocity += boost;
+		}
 		//code to put image in
 }
 
