@@ -1,4 +1,4 @@
-# CSSE220Final_Project
+# <p align="center"> CSSE220Final_Project</p>
 ## Authors:
 - Michael Fang
 - Daniel Sun
