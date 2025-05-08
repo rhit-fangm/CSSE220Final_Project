@@ -9,9 +9,12 @@ import javax.swing.SwingUtilities;
 public class GameMain {
 	public static void createGUI() {
 		JFrame frame = new JFrame("Viewer");
-
-		frame.add(new MenuPanels());
-		frame.setSize(1920, 1080);
+		Car player1 = new Car(0,0,1);
+		Car player2 = new Car(50,50,2);
+		
+		frame.add(new GamePanel(player1, player2, frame));
+		//frame.add(new MenuPanels(frame));
+		frame.setSize(1800, 1080);
 
 		frame.pack();
 		frame.setLocationRelativeTo(null); // 2) center on screen
@@ -19,8 +22,9 @@ public class GameMain {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		
-		
+
+		// check pushing java file
+
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> createGUI());

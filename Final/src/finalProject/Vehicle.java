@@ -12,6 +12,8 @@ public class Vehicle extends JPanel{
 	private final int WIDTH, HEIGHT;
 	private int velocity;
 	private double angle;
+	private int accel;
+	private int maxSpeed;
 	
 	public Vehicle(int x, int y) {
 		this.x =x;
@@ -19,7 +21,7 @@ public class Vehicle extends JPanel{
 		WIDTH = 100;
 		HEIGHT = 70;
 		velocity = 0;
-		angle = 0;
+		
 	}
 
 	public int getVelocity() {
@@ -67,5 +69,19 @@ public class Vehicle extends JPanel{
 	public int getHEIGHT() {
 		return HEIGHT;
 	}
+
+	public int getAccel() {
+		return accel;
+	}
+
+	public int getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(int maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
+
 	
 }
