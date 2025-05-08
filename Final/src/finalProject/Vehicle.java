@@ -2,11 +2,13 @@ package finalProject;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
 public class Vehicle extends JPanel{
-	private int x, y;
+	private double x, y;
 	private final int WIDTH, HEIGHT;
 	private int velocity;
 	private double angle;
@@ -14,9 +16,9 @@ public class Vehicle extends JPanel{
 	public Vehicle(int x, int y) {
 		this.x =x;
 		this.y = y;
-		WIDTH = 0;
-		HEIGHT = 0;
-		changeVelocity(0);
+		WIDTH = 100;
+		HEIGHT = 70;
+		velocity = 0;
 		angle = 0;
 	}
 
@@ -25,15 +27,15 @@ public class Vehicle extends JPanel{
 	}
 
 	public void changeVelocity(int velocity) {
-		this.velocity = velocity;
+		this.velocity += velocity;
 	}
-
-	public int getX() {
+	
+	public double getVehicleX() {
 		return x;
 	}
 
-	public void changeX(int x) {
-		this.x += x;
+	public void changeX(double d) {
+		this.x += d;
 	}
 	public void turnAngle(double degrees) {
 		angle += degrees;
@@ -42,11 +44,28 @@ public class Vehicle extends JPanel{
 		return angle;
 	}
 
-	public int getY() {
+	public double getVehicleY() {
 		return y;
 	}
 
-	public void changeY(int y) {
-		this.y += y;
+	public void changeY(double d) {
+		this.y += d;
 	}
+
+	public BufferedImage getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void rotate(double degrees) {
+		// TODO Auto-generated method stub
+		
+	}
+	public int getWIDTH() {
+		return WIDTH;
+	}
+	public int getHEIGHT() {
+		return HEIGHT;
+	}
+	
 }
