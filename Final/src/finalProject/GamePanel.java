@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+
+
 public class GamePanel extends JPanel{
 	private BufferedImage image;
 	private final JFrame frame;
@@ -46,7 +48,7 @@ public class GamePanel extends JPanel{
 			@Override
 			public void keyPressed(KeyEvent e) {
 				switch(e.getKeyCode()) {
-				case KeyEvent.VK_LEFT: inputs.replace("left1", true); break;
+				case KeyEvent.VK_LEFT: left1 = true; break;
 				case KeyEvent.VK_RIGHT: right1 = true; break;
 				case KeyEvent.VK_UP: up1 =true; break;
 				case KeyEvent.VK_DOWN: down1 = true; break;
@@ -71,151 +73,53 @@ public class GamePanel extends JPanel{
 			}
 			}});
 		
-			if(left1) {
-				player1.turnAngle(-4.0);
-			}
-			if(right1) {
-				player1.turnAngle(4.0);
-			}
-			if(up1) {
-				if(player1.getVelocity() < player1.getMaxSpeed()) {
-					player1.changeVelocity(player1.getAccel());
-				}
-			}
-			if(down1) {
-				if(player1.getVelocity() > -5) {
-					player1.changeVelocity(-player1.getAccel());
-				}
-			}
-			if(left2) {
-				player2.turnAngle(-4.0);
-			}
-			if(right2) {
-				player2.turnAngle(4.0);
-			}
-			if(up2) {
-				if(player2.getVelocity() < player2.getMaxSpeed()) {
-					player2.changeVelocity(player2.getAccel()); 
-				}
-			}
-			if(down2) {
-				if(player2.getVelocity() > -5) {
-					player2.changeVelocity(-player2.getAccel());
-				}
-			}
+			
 			Timer animationTimer = new Timer(50, e -> updateListener());
 			animationTimer.start();
 			}
-	
 
-			
-			
-		
-		
-				
-//		for(String input : inputs) {
-//			if(input.equals("Left")) {
-//
-//				player1.turnAngle(-4.0);
-//			}
-//			if(input.equals("Right")) {
-//				player1.turnAngle(4.0);
-//			}
-//			if(input.equals("Up")) {
-//				if(player1.getVelocity() < player1.getMaxSpeed()) {
-//					player1.changeVelocity(player1.getAccel()); break;
-//				}
-//			}
-//			if(input.equals("Down")) {
-//				if(player1.getVelocity() > -5) {
-//					player1.changeVelocity(-player1.getAccel()); break;
-//				}
-//			}
-//			if(input.equals("A")) {
-//				player2.turnAngle(-4.0);
-//			}
-//			if(input.equals("D")) {
-//				player2.turnAngle(4.0);
-//			}
-//			if(input.equals("W")) {
-//				if(player2.getVelocity() < player2.getMaxSpeed()) {
-//					player2.changeVelocity(player2.getAccel()); break;
-//				}
-//			}
-//			if(input.equals("S")) {
-//				if(player2.getVelocity() > -5) {
-//					player2.changeVelocity(-player2.getAccel()); break;
-//				}
-//			}
-//		}
-		
-		
-		
-		
-		
-		
-		
-		
-//		frame.addKeyListener(KeyAdapter leftRight = new KeyAdapter() {
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				switch(e.getKeyCode()){
-//				case KeyEvent.VK_LEFT: player1.turnAngle(-4.0); break;
-//				case KeyEvent.VK_RIGHT: player1.turnAngle(4.0); break;
-//			}
-//			}});
-//		frame.addKeyListener(new KeyAdapter(){
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				switch(e.getKeyCode()){
-//				case KeyEvent.VK_UP: 
-//					if(player1.getVelocity() < player1.getMaxSpeed()) {
-//						player1.changeVelocity(player1.getAccel()); break;
-//					}
-//					break;
-//				case KeyEvent.VK_DOWN:
-//					if(player1.getVelocity() > -5) {
-//						player1.changeVelocity(-player1.getAccel()); break;
-//					}
-//					break;
-//			}
-//			}});
-//		frame.addKeyListener(new KeyAdapter(){
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				switch(e.getKeyCode()){
-//				case KeyEvent.VK_A: player2.turnAngle(-4.0); break;
-//				case KeyEvent.VK_D: player2.turnAngle(4.0); break;
-//			}
-//			}});
-//		frame.addKeyListener(new KeyAdapter(){
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				switch(e.getKeyCode()){
-//				case KeyEvent.VK_W: 
-//					if(player2.getVelocity() < player2.getMaxSpeed()) {
-//						player2.changeVelocity(player2.getAccel()); break;
-//					}
-//					break;
-//				case KeyEvent.VK_S: 
-//					if(player2.getVelocity() > -5) {
-//						player2.changeVelocity(-player2.getAccel()); break;
-//					}
-//					break;
-//			}
-//			}});
-
-//		Timer animationTimer = new Timer(50, e -> updateListener());
-//		animationTimer.start();
-	
-	
-	
-	
 	//update listener using vector math temporarily
 	private void updateListener() {
+		if(left1) {
+			player1.turnAngle(-4.0);
+		}
+		if(right1) {
+			player1.turnAngle(4.0);
+		}
+		if(up1) {
+			if(player1.getVelocity() < player1.getMaxSpeed()) {
+				player1.changeVelocity(player1.getAccel());
+
+			}
+		}
+		if(down1) {
+			if(player1.getVelocity() > -5) {
+				player1.changeVelocity(-player1.getAccel());
+			}
+		}
+		if(left2) {
+			player2.turnAngle(-4.0);
+		}
+		if(right2) {
+			player2.turnAngle(4.0);
+		}
+		if(up2) {
+			if(player2.getVelocity() < player2.getMaxSpeed()) {
+				player2.changeVelocity(player2.getAccel()); 
+			}
+		}
+		if(down2) {
+			if(player2.getVelocity() > -5) {
+				player2.changeVelocity(-player2.getAccel());
+			}
+		}
+		
+		
 		if(player1.getVelocity() > 0) {
 			player1.changeVelocity(-1);
 		}
+		
+
 		player1.changeX(player1.getVelocity()*Math.cos(Math.toRadians(player1.getAngle())));
 		player1.changeY(player1.getVelocity()*Math.sin(Math.toRadians(player1.getAngle())));
 	//	player1.rotate();

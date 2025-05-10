@@ -23,7 +23,7 @@ public class Car extends Vehicle{
 	public Car(int x, int y, int carNum) {
 		super(x, y);
 		maxSpeed = 14;
-		accel = 1;
+		accel = 2;
 		angle = 90;
 		this.carNum = carNum;
 		switch(carNum) {
