@@ -1,6 +1,8 @@
 package finalProject;
 
-public class Obstacle {
+import javax.swing.JComponent;
+
+public class Obstacle extends JComponent{
 	private int x, y;
 	private int length, height;
 	
