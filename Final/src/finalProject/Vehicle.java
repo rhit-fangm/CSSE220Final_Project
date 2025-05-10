@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class Vehicle extends JComponent{
 	private double x, y;
-	private final int WIDTH, HEIGHT;
+	private int width, height;
 	private int velocity;
 	private double angle;
 	private int accel;
@@ -19,8 +19,8 @@ public class Vehicle extends JComponent{
 	public Vehicle(int x, int y) {
 		this.x =x;
 		this.y = y;
-		WIDTH = 100;
-		HEIGHT = 70;
+		width = 80;
+		height = 70;
 		velocity = 0;
 		
 	}
@@ -65,10 +65,10 @@ public class Vehicle extends JComponent{
 		
 	}
 	public int getWIDTH() {
-		return WIDTH;
+		return width;
 	}
 	public int getHEIGHT() {
-		return HEIGHT;
+		return height;
 	}
 
 	public int getAccel() {
