@@ -8,16 +8,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Tree extends Obstacle{
+public class WaterPatch extends Obstacle{
 
 	private int x, y;
 	private int length, height;
 	private BufferedImage image;
 	
-	public Tree(int x, int y, int length, int height) {
+	public WaterPatch(int x, int y, int length, int height) {
 		super(x,y,length,height);
 		try {
-			image = ImageIO.read(new File("src/images/tree"));
+			image = ImageIO.read(new File("src/images/waterPatch"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
