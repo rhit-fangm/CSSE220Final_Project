@@ -15,6 +15,7 @@ public class Vehicle extends JComponent{
 	private double angle;
 	private int accel;
 	private int maxSpeed;
+	private AbstractItem item;
 	
 	public Vehicle(int x, int y) {
 		this.x =x;
@@ -22,6 +23,7 @@ public class Vehicle extends JComponent{
 		width = 80;
 		height = 70;
 		velocity = 0;
+		item = null;
 		
 	}
 
@@ -81,6 +83,19 @@ public class Vehicle extends JComponent{
 
 	public void setMaxSpeed(int maxSpeed) {
 		this.maxSpeed = maxSpeed;
+	}
+
+	public AbstractItem getItem() {
+		return item;
+	}
+
+	public void setItem(AbstractItem item) {
+		this.item = item;
+	}
+
+	public void useItem() {
+		
+		
 	}
 
 

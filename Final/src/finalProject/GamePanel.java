@@ -26,6 +26,7 @@ public class GamePanel extends JPanel{
 	private Vehicle player2;
 	private boolean left1, right1, up1, down1, left2, right2, up2, down2;
 	private HashMap<String, Boolean> inputs = new HashMap<>();
+	private boolean p1Item, p2Item;
 	
 
 	public GamePanel(Vehicle player1, Vehicle player2, JFrame frame) {
@@ -56,6 +57,8 @@ public class GamePanel extends JPanel{
 				case KeyEvent.VK_D: right2 = true; break;
 				case KeyEvent.VK_W: up2 = true; break;
 				case KeyEvent.VK_S: down2 = true; break;
+				case KeyEvent.VK_SLASH: p1Item = true; break;
+				case KeyEvent.VK_Q: p2Item = true; break;
 				}
 				}});
 		frame.addKeyListener(new KeyAdapter() {
@@ -70,10 +73,12 @@ public class GamePanel extends JPanel{
 			case KeyEvent.VK_D: right2 = false; break;
 			case KeyEvent.VK_W: up2 = false; break;
 			case KeyEvent.VK_S: down2 = false; break;
+			case KeyEvent.VK_SLASH: p1Item = false; break;
+			case KeyEvent.VK_Q: p2Item = false; break;
 			}
 			}});
 		
-			
+		
 			Timer animationTimer = new Timer(50, e -> updateListener());
 			animationTimer.start();
 			}
@@ -118,7 +123,16 @@ public class GamePanel extends JPanel{
 		if(player1.getVelocity() > 0) {
 			player1.changeVelocity(-1);
 		}
-		
+		if(p1Item) {
+			if(player1.getItem() != null) {
+				player1.useItem();
+			}
+		}
+		if(p2Item) {
+			if(player1.getItem() != null) {
+				player1.useItem();
+			}
+		}
 
 		player1.changeX(player1.getVelocity()*Math.cos(Math.toRadians(player1.getAngle())));
 		player1.changeY(player1.getVelocity()*Math.sin(Math.toRadians(player1.getAngle())));
