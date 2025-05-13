@@ -1,0 +1,53 @@
+package frame_and_Panels;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class StartPanel extends JPanel {
+	private BufferedImage image;
+
+	public StartPanel() {
+		setPreferredSize(new Dimension(1360, 768));
+		try {
+			image = ImageIO.read(new File("src/image/titlepage.png"));
+			// ---------------------------------------------------------------------------------
+			// playSoundEffect();
+			// TODO: implement the sound effect
+			// ---------------------------------------------------------------------------------
+		} catch (IOException e) {
+			System.err.println("Caught: " + e.getMessage());
+			e.printStackTrace();
+			// ---------------------------------------------------------------------------------
+			// playSoundEffect();
+			// TODO: implement the sound effect
+			// ---------------------------------------------------------------------------------
+			image = null;
+		}
+		
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(getGraphics());
+		if (image != null) {
+			int x = (getWidth() - image.getWidth()) / 2;
+			int y = (getHeight() - image.getHeight()) / 2;
+			g.drawImage(image, x, y, this);
+		} else {
+			this.setBackground(Color.YELLOW);
+			g.setColor(Color.RED);
+			g.drawString("Image not found", 50, 50);
+		}
+	}
+
+}
