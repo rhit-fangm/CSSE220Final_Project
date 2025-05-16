@@ -10,31 +10,28 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BananaItem extends AbstractItem{
-	private int x,y;
+	private int id = 2;
 	private BufferedImage image; 
-	public BananaItem(int x, int y) {
-		super(x, y);
+	public BananaItem() {
+		super();
 		try {
-			image = ImageIO.read(new File("src/images/blueCar.png"));
+			image = ImageIO.read(new File("src/images/bananaPeelItem.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(image != null) {
-			g.drawImage(image, x, y, this);
-		}
+	public int getId() {
+		return id;
 	}
 
 	@Override
 	protected Image getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return image;
 	}
+
+	
 	
 	
 

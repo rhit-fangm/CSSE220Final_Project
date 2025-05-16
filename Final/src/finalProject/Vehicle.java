@@ -22,8 +22,8 @@ public class Vehicle extends JComponent{
 	public Vehicle(int x, int y) {
 		this.x =x;
 		this.y = y;
-		width = 80;
-		height = 70;
+		width = 100;
+		height = 60;
 		velocity = 0;
 		item = null;
 		
@@ -94,7 +94,15 @@ public class Vehicle extends JComponent{
 	}
 
 	public void setItem(AbstractItem item) {
-		this.item = item;
+		if(this.item == null) {
+			this.item = item;
+		}
+		if(this.item.getId() == 0) {
+			this.item = item;
+		}
+		if(item.getId()==0) {
+			this.item = item;
+		}
 	}
 
 	public int getX() {
@@ -104,7 +112,12 @@ public class Vehicle extends JComponent{
 		return (int) y;
 	}
 	public void useItem() {
-		
+		switch(item.getId()) {
+		case 0:break;
+		case 1: System.out.println("shell");/*throw shell  */ break;
+		case 2: System.out.println("banana");/*place banana  */ break;
+		case 3: changeVelocity(20); break;
+		}
 		
 	}
 
@@ -113,7 +126,7 @@ public class Vehicle extends JComponent{
 	}
 
 	public Rectangle2D.Double getBoundingBox() {
-		return new Rectangle2D.Double(this.x, this.y, this.width, this.height );
+		return new Rectangle2D.Double(this.x, this.y,this.width, this.height);
 	}
 
 	public int getTurningRadius() {
@@ -129,10 +142,7 @@ public class Vehicle extends JComponent{
 		
 	}
 
-	public void addItem(BananaItem bananaItem) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 
 	

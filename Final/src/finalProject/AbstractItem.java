@@ -8,22 +8,20 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 
 public abstract class AbstractItem  extends JComponent{
-	private int x,y;
+	private int id = 0;
 	private BufferedImage image;
 
-	public AbstractItem(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public AbstractItem() {
+	
 
 	}
 	protected abstract Image getImage();
 	
-	public int getX() {
-		return x;
+	
+	public int getId() {
+		return id;
 	}
-	public int getY() {
-		return y;
-	}
+
 	
 
 	

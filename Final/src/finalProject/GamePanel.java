@@ -27,7 +27,8 @@ public class GamePanel extends JPanel{
 	private boolean left1, right1, up1, down1, left2, right2, up2, down2;
 	private boolean p1Item, p2Item;
 	private ObstacleComponent obstacles;
-	
+	private AbstractItem player1Item;
+	private AbstractItem player2Item;
 
 	public GamePanel(Vehicle player1, Vehicle player2, JFrame frame) {
 		this.frame = frame;
@@ -43,10 +44,13 @@ public class GamePanel extends JPanel{
 			image = null;
 		}
 		obstacles = new ObstacleComponent();
+//		player1Item = new Empty();
+//		player2Item = new Empty();
+		player1.setItem(new Empty());
+		player2.setItem(new Empty());
 		
 		
-		
-//		ArrayList<String> inputs = new ArrayList<>();
+
 		
 		frame.addKeyListener(new KeyAdapter(){
 			@Override
@@ -129,13 +133,17 @@ public class GamePanel extends JPanel{
 			player1.changeVelocity(-1);
 		}
 		if(p1Item) {
+			
 			if(player1.getItem() != null) {
 				player1.useItem();
+				player1.setItem(new Empty());
 			}
+
 		}
 		if(p2Item) {
-			if(player1.getItem() != null) {
-				player1.useItem();
+			if(player2.getItem() != null) {
+				player2.useItem();
+				player2.setItem(new Empty());
 			}
 		}
 
@@ -165,7 +173,8 @@ public class GamePanel extends JPanel{
 			g.drawImage(image, 0, 0, this);
 			obstacles.drawStuff(g);
 			
-			
+			g.drawImage(player1.getItem().getImage(),0,0,100,100,this);
+			g.drawImage(player2.getItem().getImage(),1000,0,100,100,this);
 			
 			//drawing player 1			
 			((Graphics2D) g).translate((int) player1.getVehicleX(), (int) player1.getVehicleY());

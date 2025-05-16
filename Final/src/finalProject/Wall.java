@@ -7,17 +7,18 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class ItemBox extends Obstacle{
+public class Wall extends Obstacle{
 	private int x, y;
 	private int length, height;
 	private BufferedImage image;
-	
-	public ItemBox(int x, int y, int length, int height) {
+	private GamePanel panel;
+	public Wall(int x, int y, int length, int height) {
 		super(x,y,length,height);
+		
 		try {
-			image = ImageIO.read(new File("src/images/itemBox.png"));
+			image = ImageIO.read(new File("src/images/bush.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("image does not exist");
 			e.printStackTrace();
 		}
 	}
@@ -25,30 +26,26 @@ public class ItemBox extends Obstacle{
 		return image;
 	}
 	
-
-	@Override
-	protected void drawOn(Graphics g) {
+	public void drawOn(Graphics g) {
 		if(image != null) {
-			g.drawImage(image, x, y, length, height, this);
+
+			g.drawImage(image, x, y, length, height, panel);
 			
 		}
 		else {
 			g.fillRect(x, y, length, height);
 		}
 		
-	
 	}
-
 	@Override
 	protected void collide(Vehicle player) {
-		int randNum = (int) (Math.random()*3);
-		switch(randNum) {
-		case 0: player.setItem(new MushroomItem()); break;
-		case 1: player.setItem(new ShellItem()); break;
-		case 2: player.setItem(new BananaItem()); break;
-		}
-
+		player.changeX(-player.getVelocity()*Math.cos(Math.toRadians(player.getAngle())));
+		player.changeY(-player.getVelocity()*Math.sin(Math.toRadians(player.getAngle())));
+		
 	}
+
 	
 	
 }
+
+

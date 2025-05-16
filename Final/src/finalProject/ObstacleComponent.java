@@ -10,7 +10,7 @@ import javax.swing.JComponent;
 
 public class ObstacleComponent extends JComponent{
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
-	private ArrayList<AbstractItem> items = new ArrayList<>();
+	
 	
 	public ObstacleComponent() {
 		Obstacle bush1 = new Bush(100,200,50,50);
@@ -25,8 +25,7 @@ public class ObstacleComponent extends JComponent{
 		
 		
 		
-		AbstractItem empty1 = new Empty(0,0);
-		AbstractItem empty2 = new Empty(1000, 0);
+		
 		
 		
 		obstacles.add(bush1);
@@ -40,25 +39,22 @@ public class ObstacleComponent extends JComponent{
 		obstacles.add(item1);
 		
 		
-		items.add(empty1);
-		items.add(empty2);
+		
 	}
 	public void drawStuff(Graphics g) {
 		for(Obstacle obstacle : obstacles) {
 			g.drawImage(obstacle.getImage(),obstacle.getX(),obstacle.getY(),obstacle.getLength(), obstacle.getHeight(),this);
 
 		}
-		for(AbstractItem item: items) {
-			g.drawImage(item.getImage(),item.getX(),item.getY(),100,100,this);
-		}
+		
 	}
 
 	
 	public void handleCollision(Vehicle player) {
 		for(Obstacle obstacle : obstacles) {
 			
-			Rectangle2D.Double boundingBox = new Rectangle2D.Double(obstacle.getX(), obstacle.getY(),obstacle.getLength(), obstacle.getHeight());;
-			if(boundingBox .intersects(player.getBoundingBox())) {
+			Rectangle2D.Double boundingBox = new Rectangle2D.Double(obstacle.getX()+obstacle.getLength()*0.1, obstacle.getY()+obstacle.getHeight()*0.1,obstacle.getLength()*0.9, obstacle.getHeight()*0.9);;
+			if(boundingBox.intersects(player.getBoundingBox())) {
 				obstacle.collide(player);
 
 			}
