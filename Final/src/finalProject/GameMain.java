@@ -12,10 +12,16 @@ public class GameMain {
 		JFrame frame = new JFrame("Viewer");
 		Car player1 = new Car(0,0,1);
 		Car player2 = new Car(50,50,2);
+
+
 		
 		frame.add(new GamePanel(player1, player2, frame));
+//		frame.add(obstacles);
+//		frame.add(mud);
+//		
+//		obstacles.drawStuff();
 		//frame.add(new MenuPanels(frame));
-		frame.setSize(1800, 1080);
+		frame.setSize(1500, 800);
 
 		frame.pack();
 		frame.setLocationRelativeTo(null); // 2) center on screen

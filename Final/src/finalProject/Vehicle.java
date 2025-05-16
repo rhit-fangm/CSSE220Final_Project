@@ -3,6 +3,7 @@ package finalProject;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
@@ -16,6 +17,7 @@ public class Vehicle extends JComponent{
 	private int accel;
 	private int maxSpeed;
 	private AbstractItem item;
+	private int turningRadius;
 	
 	public Vehicle(int x, int y) {
 		this.x =x;
@@ -24,6 +26,8 @@ public class Vehicle extends JComponent{
 		height = 70;
 		velocity = 0;
 		item = null;
+		
+		
 		
 	}
 
@@ -66,10 +70,10 @@ public class Vehicle extends JComponent{
 		// TODO Auto-generated method stub
 		
 	}
-	public int getWIDTH() {
+	public int getWidth() {
 		return width;
 	}
-	public int getHEIGHT() {
+	public int getHeight() {
 		return height;
 	}
 
@@ -93,8 +97,40 @@ public class Vehicle extends JComponent{
 		this.item = item;
 	}
 
+	public int getX() {
+		return (int) x;
+	}
+	public int getY() {
+		return (int) y;
+	}
 	public void useItem() {
 		
+		
+	}
+
+	public void draw() {
+		
+	}
+
+	public Rectangle2D.Double getBoundingBox() {
+		return new Rectangle2D.Double(this.x, this.y, this.width, this.height );
+	}
+
+	public int getTurningRadius() {
+		return turningRadius;
+	}
+
+	public void setTurningRadius(int turningRadius) {
+		this.turningRadius = turningRadius;
+	}
+
+	public void boost(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addItem(BananaItem bananaItem) {
+		// TODO Auto-generated method stub
 		
 	}
 

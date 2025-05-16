@@ -17,7 +17,8 @@ public class Car extends Vehicle{
 	private double angle;
 	private int velocity;
 	private int accel;
-	private int WIDTH,HEIGHT;
+	private int turningRadius;
+
 	private int maxSpeed;
 	
 	public Car(int x, int y, int carNum) {
@@ -26,6 +27,7 @@ public class Car extends Vehicle{
 		accel = 2;
 		angle = 90;
 		this.carNum = carNum;
+		turningRadius = 4;
 		switch(carNum) {
 			case 1: try {
 				image = ImageIO.read(new File("src/images/blueCar.png"));
@@ -80,10 +82,18 @@ public class Car extends Vehicle{
 		public int getMaxSpeed() {
 			return maxSpeed;
 		}
-		public void boost(int boost) {
-			velocity += boost;
+		public void setMaxSpeed(int speed) {
+			maxSpeed = speed;
 		}
-		//code to put image in
+		
+		public int getTurningRadius() {
+			return turningRadius;
+		}
+
+		public void setTurningRadius(int turningRadius) {
+			this.turningRadius = turningRadius;
+		}
+		
 }
 
 

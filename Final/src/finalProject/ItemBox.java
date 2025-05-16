@@ -1,29 +1,24 @@
 package finalProject;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Timer;
 
-public class Mudpatch extends Obstacle{
-	
+public class ItemBox extends Obstacle{
 	private int x, y;
 	private int length, height;
 	private BufferedImage image;
-	private GamePanel panel;
-	private Timer t;
-	public Mudpatch(int x, int y, int length, int height) {
+	
+	public ItemBox(int x, int y, int length, int height) {
 		super(x,y,length,height);
 		try {
-			image = ImageIO.read(new File("src/images/mudPatch.png"));
+			image = ImageIO.read(new File("src/images/titlePage.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("no image");
+			e.printStackTrace();
 		}
 	}
 	public BufferedImage getImage() {
@@ -34,8 +29,8 @@ public class Mudpatch extends Obstacle{
 	@Override
 	protected void drawOn(Graphics g) {
 		if(image != null) {
-			g.drawImage(image, x, y, length, height, null);
-			
+			g.drawImage(image, x, y, length, height, this);
+			System.out.println("adding image");
 		}
 		else {
 			g.fillRect(x, y, length, height);
@@ -43,20 +38,14 @@ public class Mudpatch extends Obstacle{
 		
 	
 	}
-	
+
 	@Override
 	protected void collide(Vehicle player) {
-		t = new Timer(2000, e -> slow5(player));
-		player.setMaxSpeed(5);
-		
-		
+		int randNum = (int) Math.random()*3;
+		switch(randNum) {
+		case 0: player.addItem(null);
+		}
 	}
-	private void slow5(Vehicle player) {
-		t = null;
-		player.setMaxSpeed(player.getMaxSpeed()*2);
-
-	}
-	
 	
 	
 }

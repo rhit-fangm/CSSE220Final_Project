@@ -1,6 +1,7 @@
 package finalProject;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,12 @@ public class ShellItem extends AbstractItem{
 		if(image != null) {
 			g.drawImage(image, x, y, this);
 		}
+	}
+
+	@Override
+	protected Image getImage() {
+		// TODO Auto-generated method stub
+		return image;
 	}
 	
 	

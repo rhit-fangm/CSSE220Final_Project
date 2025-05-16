@@ -25,23 +25,26 @@ public class GamePanel extends JPanel{
 	private Vehicle player1;
 	private Vehicle player2;
 	private boolean left1, right1, up1, down1, left2, right2, up2, down2;
-	private HashMap<String, Boolean> inputs = new HashMap<>();
 	private boolean p1Item, p2Item;
+	private ObstacleComponent obstacles;
 	
 
 	public GamePanel(Vehicle player1, Vehicle player2, JFrame frame) {
 		this.frame = frame;
+		
 		this.player1 = player1;
 		this.player2 = player2;
-		inputs.put("left1", false);
 		setPreferredSize(new Dimension(1530,1080));
 		try {
-			image = ImageIO.read(new File("src/images/bush.png"));
+			image = ImageIO.read(new File("src/images/map1.png"));
 		} catch (IOException e) {
 			System.err.println("Caught: " + e.getMessage());
 			e.printStackTrace();
 			image = null;
 		}
+		obstacles = new ObstacleComponent();
+		
+		
 		
 //		ArrayList<String> inputs = new ArrayList<>();
 		
@@ -77,19 +80,21 @@ public class GamePanel extends JPanel{
 			case KeyEvent.VK_Q: p2Item = false; break;
 			}
 			}});
-		
-		
-			Timer animationTimer = new Timer(50, e -> updateListener());
-			animationTimer.start();
-			}
 
-	//update listener using vector math temporarily
+		
+		
+		
+		Timer animationTimer = new Timer(50, e -> updateListener());
+		animationTimer.start();
+	}
+
+	//update listener using vector math 
 	private void updateListener() {
 		if(left1) {
-			player1.turnAngle(-4.0);
+			player1.turnAngle(-player1.getTurningRadius());
 		}
 		if(right1) {
-			player1.turnAngle(4.0);
+			player1.turnAngle(player1.getTurningRadius());
 		}
 		if(up1) {
 			if(player1.getVelocity() < player1.getMaxSpeed()) {
@@ -103,10 +108,10 @@ public class GamePanel extends JPanel{
 			}
 		}
 		if(left2) {
-			player2.turnAngle(-4.0);
+			player2.turnAngle(-player2.getTurningRadius());
 		}
 		if(right2) {
-			player2.turnAngle(4.0);
+			player2.turnAngle(player2.getTurningRadius());
 		}
 		if(up2) {
 			if(player2.getVelocity() < player2.getMaxSpeed()) {
@@ -143,37 +148,44 @@ public class GamePanel extends JPanel{
 		player2.changeX(player2.getVelocity()*Math.cos(Math.toRadians(player2.getAngle())));
 		player2.changeY(player2.getVelocity()*Math.sin(Math.toRadians(player2.getAngle())));
 	//	player2.rotate();
+		obstacles.handleCollision(player1);
+		obstacles.handleCollision(player2);
 		repaint();
+		
 	}
 
-
+	
 
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(getGraphics());
+		super.paintComponent(g);
 		if(image != null) {
 			//drawing background
 			g.drawImage(image, 0, 0, this);
+			obstacles.drawStuff(g);
 			
-			//drawing player 1
+			
+			
+			//drawing player 1			
 			((Graphics2D) g).translate((int) player1.getVehicleX(), (int) player1.getVehicleY());
-			((Graphics2D) g).rotate(Math.toRadians(player1.getAngle()), player1.getWIDTH()/2, player1.getHEIGHT()/2);
-			g.drawImage(player1.getImage(), 0, 0 , player1.getWIDTH(), player1.getHEIGHT(), this);
-			((Graphics2D) g).rotate(-Math.toRadians(player1.getAngle()), player1.getWIDTH()/2, player1.getHEIGHT()/2);
+			((Graphics2D) g).rotate(Math.toRadians(player1.getAngle()), player1.getWidth()/2, player1.getHeight()/2);
+			g.drawImage(player1.getImage(), 0, 0 , player1.getWidth(), player1.getHeight(), this);
+			((Graphics2D) g).rotate(-Math.toRadians(player1.getAngle()), player1.getWidth()/2, player1.getHeight()/2);
 			((Graphics2D) g).translate(-(int) player1.getVehicleX(), -(int) player1.getVehicleY());
 			
 			//drawing player 2
 			((Graphics2D) g).translate((int) player2.getVehicleX(), (int) player2.getVehicleY());
-			((Graphics2D) g).rotate(Math.toRadians(player2.getAngle()), player2.getWIDTH()/2, player2.getHEIGHT()/2);
-			g.drawImage(player2.getImage(), 0, 0 , player2.getWIDTH(), player2.getHEIGHT(), this);
-			((Graphics2D) g).rotate(-Math.toRadians(player2.getAngle()), player2.getWIDTH()/2, player2.getHEIGHT()/2);
+			((Graphics2D) g).rotate(Math.toRadians(player2.getAngle()), player2.getWidth()/2, player2.getHeight()/2);
+			g.drawImage(player2.getImage(), 0, 0 , player2.getWidth(), player2.getHeight(), this);
+			((Graphics2D) g).rotate(-Math.toRadians(player2.getAngle()), player2.getWidth()/2, player2.getHeight()/2);
 			((Graphics2D) g).translate(-(int) player2.getVehicleX(), -(int) player2.getVehicleY());
-		} else {
-			//setBackground(Color.RED);
-			g.setColor(Color.BLACK);
-			g.drawImage(player1.getImage(), (int) player1.getVehicleX(), (int) player1.getVehicleY(), player2.getWIDTH(), player2.getHEIGHT(),this);
-			g.drawImage(player2.getImage(), (int) player2.getVehicleX(), (int) player2.getVehicleY(), player2.getWIDTH(), player2.getHEIGHT(),this);
+			
+			
+				
+			
+			} 
 		}
+		
 	}
-}
+
