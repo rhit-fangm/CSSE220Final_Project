@@ -1,3 +1,4 @@
+
 package finalProject;
 
 import java.awt.Color;
@@ -17,36 +18,38 @@ public class Car extends Vehicle{
 	private double angle;
 	private int velocity;
 	private int accel;
-	private int WIDTH,HEIGHT;
+	private int turningRadius;
+
 	private int maxSpeed;
 	
 	public Car(int x, int y, int carNum) {
 		super(x, y);
 		maxSpeed = 14;
-		accel = 1;
+		accel = 2;
 		angle = 90;
 		this.carNum = carNum;
+		turningRadius = 4;
 		switch(carNum) {
 			case 1: try {
-				image = ImageIO.read(new File("src/images/blueCar.png"));
+				image = ImageIO.read(new File("Final/src/images/blueCar.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 2: try {
-				image = ImageIO.read(new File("src/images/purpleCar.png"));
+				image = ImageIO.read(new File("Final/src/images/purpleCar.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 3: try {
-				image = ImageIO.read(new File("src/images/whiteCar.png"));
+				image = ImageIO.read(new File("Final/src/images/whiteCar.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 4: try {
-				image = ImageIO.read(new File("src/images/brownCar.png"));
+				image = ImageIO.read(new File("Final/src/images/brownCar.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
@@ -80,10 +83,18 @@ public class Car extends Vehicle{
 		public int getMaxSpeed() {
 			return maxSpeed;
 		}
-		public void boost(int boost) {
-			velocity += boost;
+		public void setMaxSpeed(int speed) {
+			maxSpeed = speed;
 		}
-		//code to put image in
+		
+		public int getTurningRadius() {
+			return turningRadius;
+		}
+
+		public void setTurningRadius(int turningRadius) {
+			this.turningRadius = turningRadius;
+		}
+		
 }
 
 

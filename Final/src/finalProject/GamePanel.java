@@ -1,3 +1,4 @@
+
 package finalProject;
 
 import java.awt.Color;
@@ -9,128 +10,318 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
 	private BufferedImage image;
-	private final JFrame frame;
+	private JFrame frame;
 	private Vehicle player1;
 	private Vehicle player2;
-
-	
+	private boolean left1, right1, up1, down1, left2, right2, up2, down2;
+	private boolean p1Item, p2Item;
+	private ObstacleComponent obstacles;
+	private AbstractItem player1Item;
+	private AbstractItem player2Item;
 
 	public GamePanel(Vehicle player1, Vehicle player2, JFrame frame) {
 		this.frame = frame;
+
 		this.player1 = player1;
 		this.player2 = player2;
-		
-		setPreferredSize(new Dimension(1530,1080));
+		setPreferredSize(new Dimension(1530, 1080));
 		try {
-			image = ImageIO.read(new File("src/images/titlepage.png"));
+			image = ImageIO.read(new File("Final/src/images/map1.png"));
 		} catch (IOException e) {
 			System.err.println("Caught: " + e.getMessage());
 			e.printStackTrace();
 			image = null;
 		}
-		frame.addKeyListener(new KeyAdapter(){
+		obstacles = new ObstacleComponent(frame);
+//		player1Item = new Empty();
+//		player2Item = new Empty();
+		player1.setItem(new Empty());
+		player2.setItem(new Empty());
+
+		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()){
-				case KeyEvent.VK_LEFT: player1.turnAngle(-4.0); break;
-				case KeyEvent.VK_RIGHT: player1.turnAngle(4.0); break;
-			}
-			}});
-		frame.addKeyListener(new KeyAdapter(){
-			@Override
-			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()){
-				case KeyEvent.VK_UP: 
-					if(player1.getVelocity() < player1.getMaxSpeed()) {
-						player1.changeVelocity(player1.getAccel()); break;
-					}
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					left1 = true;
+					break;
+				case KeyEvent.VK_RIGHT:
+					right1 = true;
+					break;
+				case KeyEvent.VK_UP:
+					up1 = true;
 					break;
 				case KeyEvent.VK_DOWN:
-					if(player1.getVelocity() > -5) {
-						player1.changeVelocity(-player1.getAccel()); break;
-					}
+					down1 = true;
 					break;
+				case KeyEvent.VK_A:
+					left2 = true;
+					break;
+				case KeyEvent.VK_D:
+					right2 = true;
+					break;
+				case KeyEvent.VK_W:
+					up2 = true;
+					break;
+				case KeyEvent.VK_S:
+					down2 = true;
+					break;
+				case KeyEvent.VK_SLASH:
+					p1Item = true;
+					break;
+				case KeyEvent.VK_Q:
+					p2Item = true;
+					break;
+				}
 			}
-			}});
-		frame.addKeyListener(new KeyAdapter(){
+		});
+		frame.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()){
-				case KeyEvent.VK_A: player2.turnAngle(-4.0); break;
-				case KeyEvent.VK_D: player2.turnAngle(4.0); break;
-			}
-			}});
-		frame.addKeyListener(new KeyAdapter(){
-			@Override
-			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()){
-				case KeyEvent.VK_W: 
-					if(player2.getVelocity() < player2.getMaxSpeed()) {
-						player2.changeVelocity(player2.getAccel()); break;
-					}
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					left1 = false;
 					break;
-				case KeyEvent.VK_S: 
-					if(player2.getVelocity() > -5) {
-						player2.changeVelocity(-player2.getAccel()); break;
-					}
+				case KeyEvent.VK_RIGHT:
+					right1 = false;
 					break;
+				case KeyEvent.VK_UP:
+					up1 = false;
+					break;
+				case KeyEvent.VK_DOWN:
+					down1 = false;
+					break;
+				case KeyEvent.VK_A:
+					left2 = false;
+					break;
+				case KeyEvent.VK_D:
+					right2 = false;
+					break;
+				case KeyEvent.VK_W:
+					up2 = false;
+					break;
+				case KeyEvent.VK_S:
+					down2 = false;
+					break;
+				case KeyEvent.VK_SLASH:
+					p1Item = false;
+					break;
+				case KeyEvent.VK_Q:
+					p2Item = false;
+					break;
+				}
 			}
-			}});
+		});
+		
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+		
 		Timer animationTimer = new Timer(50, e -> updateListener());
 		animationTimer.start();
 	}
-	
-	
-	
-	//update listener using vector math temporarily
+
+	public GamePanel(Vehicle player2, JFrame frame) {
+		this.frame = frame;
+
+		this.player2 = player2;
+		setPreferredSize(new Dimension(1530, 1080));
+		try {
+			image = ImageIO.read(new File("Final/src/images/map1.png"));
+		} catch (IOException e) {
+			System.err.println("Caught: " + e.getMessage());
+			e.printStackTrace();
+			image = null;
+		}
+		obstacles = new ObstacleComponent(frame);
+//		player1Item = new Empty();
+//		player2Item = new Empty();
+		player2.setItem(new Empty());
+
+		frame.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_A:
+					left2 = true;
+					break;
+				case KeyEvent.VK_D:
+					right2 = true;
+					break;
+				case KeyEvent.VK_W:
+					System.out.println("Key pressed: " + e.getKeyCode());
+					up2 = true;
+					break;
+				case KeyEvent.VK_S:
+					down2 = true;
+					break;
+				case KeyEvent.VK_Q:
+					p2Item = true;
+					break;
+				}
+			}
+		});
+		frame.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_A:
+					left2 = false;
+					break;
+				case KeyEvent.VK_D:
+					right2 = false;
+					break;
+				case KeyEvent.VK_W:
+					up2 = false;
+					break;
+				case KeyEvent.VK_S:
+					down2 = false;
+					break;
+				case KeyEvent.VK_Q:
+					p2Item = false;
+					break;
+				}
+			}
+		});
+		
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+		
+		Timer animationTimer = new Timer(50, e -> updateListener());
+		animationTimer.start();
+	}
+
+	// update listener using vector math
 	private void updateListener() {
+		if (player1 != null) {
+		if (left1) {
+			player1.turnAngle(-player1.getTurningRadius());
+		}
 		
-		player1.changeX(player1.getVelocity()*Math.cos(Math.toRadians(player1.getAngle())));
-		player1.changeY(player1.getVelocity()*Math.sin(Math.toRadians(player1.getAngle())));
-	//	player1.rotate();
+		if (right1) {
+			player1.turnAngle(player1.getTurningRadius());
+		}
 		
-		player2.changeX(player2.getVelocity()*Math.cos(Math.toRadians(player2.getAngle())));
-		player2.changeY(player2.getVelocity()*Math.sin(Math.toRadians(player2.getAngle())));
-	//	player2.rotate();
+		if (up1) {
+			if (player1.getVelocity() < player1.getMaxSpeed()) {
+				player1.changeVelocity(player1.getAccel());
+
+			}
+		}
+		if (down1) {
+			if (player1.getVelocity() > -5) {
+				player1.changeVelocity(-player1.getAccel());
+			}
+		}
+		
+		if (player1.getVelocity() > 0) {
+			player1.changeVelocity(-1);
+		}
+		
+		if (p1Item) {
+			if (player1.getItem() != null) {
+				player1.useItem();
+				player1.setItem(new Empty());
+			}
+		}
+		
+		obstacles.handleCollision(player1);
+		
+		player1.changeX(player1.getVelocity() * Math.cos(Math.toRadians(player1.getAngle())));
+		player1.changeY(player1.getVelocity() * Math.sin(Math.toRadians(player1.getAngle())));
+		}
+		
+		if (player2 != null) {
+		if (left2) {
+			player2.turnAngle(-player2.getTurningRadius());
+		}
+		
+		if (right2) {
+			player2.turnAngle(player2.getTurningRadius());
+		}
+		
+		if (up2) {
+			if (player2.getVelocity() < player2.getMaxSpeed()) {
+				player2.changeVelocity(player2.getAccel());
+			}
+		}
+		
+		if (down2) {
+			if (player2.getVelocity() > -5) {
+				player2.changeVelocity(-player2.getAccel());
+			}
+		}
+		
+		if (player2.getVelocity() > 0) {
+			player2.changeVelocity(-1);
+		}
+
+		if (p2Item) {
+			if (player2.getItem() != null) {
+				player2.useItem();
+				player2.setItem(new Empty());
+			}
+		}
+		
+		player2.changeX(player2.getVelocity() * Math.cos(Math.toRadians(player2.getAngle())));
+		player2.changeY(player2.getVelocity() * Math.sin(Math.toRadians(player2.getAngle())));
+		
+		obstacles.handleCollision(player2);
+		}
+		
 		repaint();
 	}
 
-
-
-
 	@Override
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(getGraphics());
-		if(image != null) {
-			//drawing background
-			g.drawImage(image, 0, 0, this);
+		super.paintComponent(g);
+		if (image != null) {
+			// drawing background
+			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			obstacles.drawStuff(g);
+
+			// drawing player 1
+			for (int i = 0; i < getWidth(); i = i + 100) {
+				g.drawLine(i, 0, i, getHeight());
+			}
 			
-			//drawing player 1
-			((Graphics2D) g).translate((int) player1.getVehicleX(), (int) player1.getVehicleY());
-			((Graphics2D) g).rotate(Math.toRadians(player1.getAngle()), player1.getWIDTH()/2, player1.getHEIGHT()/2);
-			g.drawImage(player1.getImage(), 0, 0 , player1.getWIDTH(), player1.getHEIGHT(), this);
-			((Graphics2D) g).rotate(-Math.toRadians(player1.getAngle()), player1.getWIDTH()/2, player1.getHEIGHT()/2);
-			((Graphics2D) g).translate(-(int) player1.getVehicleX(), -(int) player1.getVehicleY());
+			for (int i = 0; i < getHeight(); i = i + 100) {
+				g.drawLine(0, i, getWidth(), i);
+			}
 			
-			//drawing player 2
-			((Graphics2D) g).translate((int) player2.getVehicleX(), (int) player2.getVehicleY());
-			((Graphics2D) g).rotate(Math.toRadians(player2.getAngle()), player2.getWIDTH()/2, player2.getHEIGHT()/2);
-			g.drawImage(player2.getImage(), 0, 0 , player2.getWIDTH(), player2.getHEIGHT(), this);
-			((Graphics2D) g).rotate(-Math.toRadians(player2.getAngle()), player2.getWIDTH()/2, player2.getHEIGHT()/2);
-			((Graphics2D) g).translate(-(int) player2.getVehicleX(), -(int) player2.getVehicleY());
-		} else {
-			//setBackground(Color.RED);
-			g.setColor(Color.BLACK);
-			g.drawImage(player1.getImage(), (int) player1.getVehicleX(), (int) player1.getVehicleY(), player2.getWIDTH(), player2.getHEIGHT(),this);
-			g.drawImage(player2.getImage(), (int) player2.getVehicleX(), (int) player2.getVehicleY(), player2.getWIDTH(), player2.getHEIGHT(),this);
+			if (player1 != null) {
+				g.drawImage(player1.getItem().getImage(), getWidth() - 100, 0, 100, 100, this);
+				
+				((Graphics2D) g).translate((int) player1.getVehicleX(), (int) player1.getVehicleY());
+				((Graphics2D) g).rotate(Math.toRadians(player1.getAngle()), player1.getWidth() / 2,
+						player1.getHeight() / 2);
+				g.drawImage(player1.getImage(), 0, 0, player1.getWidth(), player1.getHeight(), this);
+				((Graphics2D) g).rotate(-Math.toRadians(player1.getAngle()), player1.getWidth() / 2,
+						player1.getHeight() / 2);
+				((Graphics2D) g).translate(-(int) player1.getVehicleX(), -(int) player1.getVehicleY());
+			}
+
+			// drawing player 2
+			if (player2 != null) {
+				g.drawImage(player2.getItem().getImage(), 0, 0, 100, 100, this);
+				
+				((Graphics2D) g).translate((int) player2.getVehicleX(), (int) player2.getVehicleY());
+				((Graphics2D) g).rotate(Math.toRadians(player2.getAngle()), player2.getWidth() / 2,
+						player2.getHeight() / 2);
+				g.drawImage(player2.getImage(), 0, 0, player2.getWidth(), player2.getHeight(), this);
+				((Graphics2D) g).rotate(-Math.toRadians(player2.getAngle()), player2.getWidth() / 2,
+						player2.getHeight() / 2);
+				((Graphics2D) g).translate(-(int) player2.getVehicleX(), -(int) player2.getVehicleY());
+			}
 		}
 	}
 }

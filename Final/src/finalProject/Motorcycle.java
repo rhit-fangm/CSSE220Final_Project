@@ -1,3 +1,4 @@
+
 package finalProject;
 
 import java.awt.Color;
@@ -23,25 +24,25 @@ public class Motorcycle extends Vehicle{
 		this.motorNum = motorNum;
 		switch(motorNum) {
 			case 1: try {
-				image = ImageIO.read(new File("src/images/blueMotorcycle.png"));
+				image = ImageIO.read(new File("Final/src/images/blueMotorcycle.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 2: try {
-				image = ImageIO.read(new File("src/images/purpleMotorcycle.png"));
+				image = ImageIO.read(new File("Final/src/images/purpleMotorcycle.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 3: try {
-				image = ImageIO.read(new File("src/images/whiteMotorcycle.png"));
+				image = ImageIO.read(new File("Final/src/images/whiteMotorcycle.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
 			case 4: try {
-				image = ImageIO.read(new File("src/images/brownMotorcycle.png"));
+				image = ImageIO.read(new File("Final/src/images/brownMotorcycle.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();

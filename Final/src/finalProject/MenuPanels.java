@@ -24,7 +24,7 @@ private boolean enterPressed;
 		enterPressed = false;
 		setPreferredSize(new Dimension(1530,1080));
 		try {
-			image = ImageIO.read(new File("src/images/titlepage.png"));
+			image = ImageIO.read(new File("Final/src/images/titlepage.png"));
 		} catch (IOException e) {
 			System.err.println("Caught: " + e.getMessage());
 			e.printStackTrace();
@@ -37,7 +37,7 @@ private boolean enterPressed;
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 					try {
 						enterPressed = true;
-						image = ImageIO.read(new File("src/images/whitecar.png"));
+						image = ImageIO.read(new File("Final/src/images/whitecar.png"));
 						repaint();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
