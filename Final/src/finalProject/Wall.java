@@ -12,11 +12,12 @@ public class Wall extends Obstacle{
 	private int length, height;
 	private BufferedImage image;
 	private GamePanel panel;
-	public Wall(int x, int y, int length, int height) {
+	private int angle;
+	public Wall(int x, int y, int length, int height, int angle) {
 		super(x,y,length,height);
-		
+		this.angle = angle;
 		try {
-			image = ImageIO.read(new File("src/images/bush.png"));
+			image = ImageIO.read(new File("src/images/wall.png"));
 		} catch (IOException e) {
 			System.out.println("image does not exist");
 			e.printStackTrace();
@@ -42,6 +43,10 @@ public class Wall extends Obstacle{
 		player.changeX(-player.getVelocity()*Math.cos(Math.toRadians(player.getAngle())));
 		player.changeY(-player.getVelocity()*Math.sin(Math.toRadians(player.getAngle())));
 		
+	}
+	public double getAngle() {
+		// TODO Auto-generated method stub
+		return angle;
 	}
 
 	

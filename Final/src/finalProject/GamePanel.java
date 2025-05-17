@@ -43,7 +43,7 @@ public class GamePanel extends JPanel{
 			e.printStackTrace();
 			image = null;
 		}
-		obstacles = new ObstacleComponent();
+		obstacles = new ObstacleComponent(frame);
 //		player1Item = new Empty();
 //		player2Item = new Empty();
 		player1.setItem(new Empty());
@@ -170,11 +170,18 @@ public class GamePanel extends JPanel{
 		super.paintComponent(g);
 		if(image != null) {
 			//drawing background
-			g.drawImage(image, 0, 0, this);
+			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			obstacles.drawStuff(g);
 			
-			g.drawImage(player1.getItem().getImage(),0,0,100,100,this);
-			g.drawImage(player2.getItem().getImage(),1000,0,100,100,this);
+			for(int i = 0; i < getWidth(); i += getWidth()/10) {
+				g.drawLine(i, 0, i, getHeight());
+			}
+			for(int i = 0; i < getHeight(); i += getHeight()/10) {
+				g.drawLine(0, i, getWidth(), i);
+			}
+			
+			g.drawImage(player1.getItem().getImage(),getWidth() - 100,0,100,100,this);
+			g.drawImage(player2.getItem().getImage(),0,0,100,100,this);
 			
 			//drawing player 1			
 			((Graphics2D) g).translate((int) player1.getVehicleX(), (int) player1.getVehicleY());
