@@ -23,7 +23,15 @@ public class ObstacleComponent extends JComponent {
 		Obstacle speed1 = new SpeedPanel(400, 100, 50, 50);
 		Obstacle speed2 = new SpeedPanel(450, 500, 75, 75);
 		Obstacle item1 = new ItemBox(700, 700, 50, 50);
-		Obstacle wall1 = new Wall((int) (frame.getWidth() * 0.27), (int) (frame.getHeight() * 0.34), (int) (frame.getWidth() * 0.10), (int) (frame.getHeight() * 0.025), 0);
+		Obstacle wall1 = new Wall((int) (frame.getWidth() * 0.27), (int) (frame.getHeight() * 0.34),
+				(int) (frame.getWidth() * 0.11), (int) (frame.getHeight() * 0.025), 0);
+		Obstacle wall2 = new Wall((int) (frame.getWidth() * 0.27), (int) (frame.getHeight() * 0.34),
+				(int) (frame.getWidth() * 0.11), (int) (frame.getHeight() * 0.025), 0);
+		Obstacle wall3 = new Wall((int) (frame.getWidth() * 0.27), (int) (frame.getHeight() * 0.34),
+				(int) (frame.getWidth() * 0.11), (int) (frame.getHeight() * 0.025), 0);
+		Obstacle wall4 = new Wall((int) (frame.getWidth() * 0.27), (int) (frame.getHeight() * 0.34),
+						(int) (frame.getWidth() * 0.11), (int) (frame.getHeight() * 0.025), 0);
+				
 		obstacles.add(bush1);
 		obstacles.add(bush2);
 		obstacles.add(mud1);
