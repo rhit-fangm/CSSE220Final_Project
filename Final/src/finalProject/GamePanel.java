@@ -158,7 +158,6 @@ public class GamePanel extends JPanel {
 					right2 = true;
 					break;
 				case KeyEvent.VK_W:
-					System.out.println("Key pressed: " + e.getKeyCode());
 					up2 = true;
 					break;
 				case KeyEvent.VK_S:
