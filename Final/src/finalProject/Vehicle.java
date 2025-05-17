@@ -18,6 +18,7 @@ public class Vehicle extends JComponent{
 	private int maxSpeed;
 	private AbstractItem item;
 	private int turningRadius;
+	private int lapNum, checkpointNum;
 	
 	public Vehicle(int x, int y) {
 		this.x =x;
@@ -140,6 +141,23 @@ public class Vehicle extends JComponent{
 	public void boost(int i) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	
+	public int getLapNum() {
+		return lapNum;
+	}
+
+	public void incLapNum() {
+		lapNum++;
+	}
+
+	public int getCheckpointNum() {
+		return checkpointNum;
+	}
+
+	public void setCheckpointNum(int num) {
+		checkpointNum = num;
 	}
 
 	

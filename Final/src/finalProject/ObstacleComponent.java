@@ -26,6 +26,9 @@ public class ObstacleComponent extends JComponent{
 		Obstacle speed1 = new SpeedPanel(400,100,50,50);
 		Obstacle speed2 = new SpeedPanel(450,500,75,75);
 		Obstacle item1 = new ItemBox(700, 700, 50, 50);
+		Obstacle checkpoint1 = new Checkpoint((int)(frame.getWidth()*0.8),(int)(frame.getHeight()*0.5),(int)(frame.getWidth()*0.3),(int)(frame.getHeight()*0.025),1);
+		Obstacle checkpoint2 = new Checkpoint((int)(frame.getWidth()*0.8),(int)(frame.getHeight()*0.6),10,200,2);
+		Obstacle checkpoint3 = new Checkpoint(350,100,10,200,3);
 		Wall wall1 = new Wall(280,350,100,10, 0);
 		Wall wall2 = new Wall(380,350,100,10, 90);
 		
@@ -33,7 +36,9 @@ public class ObstacleComponent extends JComponent{
 		walls.add(wall1);
 		walls.add(wall2);
 		
-		
+		obstacles.add(checkpoint1);
+		obstacles.add(checkpoint2);
+		obstacles.add(checkpoint3);
 		obstacles.add(bush1);
 		obstacles.add(bush2);
 		obstacles.add(mud1);
@@ -49,8 +54,12 @@ public class ObstacleComponent extends JComponent{
 	}
 	public void drawStuff(Graphics g) {
 		for(Obstacle obstacle : obstacles) {
-			g.drawImage(obstacle.getImage(),obstacle.getX(),obstacle.getY(),obstacle.getLength(), obstacle.getHeight(),this);
-
+			if(obstacle.getImage() != null) {
+				g.drawImage(obstacle.getImage(),obstacle.getX(),obstacle.getY(),obstacle.getLength(), obstacle.getHeight(),this);
+			}
+			else {
+				g.drawRect(obstacle.getX(), obstacle.getY(), obstacle.getLength(), obstacle.getHeight());
+			}
 		}
 		for(Wall wall : walls) {
 			((Graphics2D) g).translate((int) wall.getX(), (int) wall.getY());
