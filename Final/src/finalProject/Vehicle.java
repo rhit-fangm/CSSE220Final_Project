@@ -7,6 +7,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Vehicle extends JComponent{
@@ -20,11 +21,11 @@ public class Vehicle extends JComponent{
 	private int turningRadius;
 	private int lapNum, checkpointNum;
 	
-	public Vehicle(int x, int y) {
+	public Vehicle(int x, int y, JFrame frame) {
 		this.x =x;
 		this.y = y;
-		width = 100;
-		height = 60;
+		width = (int) (frame.getWidth() * 0.05);
+		height = (int) (frame.getHeight() * 0.07);
 		velocity = 0;
 		item = null;
 		

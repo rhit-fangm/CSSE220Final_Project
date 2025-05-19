@@ -18,7 +18,6 @@ public class BananaItem extends AbstractItem{
 		try {
 			image = ImageIO.read(new File("Final/src/images/bananaPeelItem.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

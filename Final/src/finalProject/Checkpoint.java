@@ -14,8 +14,6 @@ public class Checkpoint extends Obstacle{
 
 	@Override
 	protected void drawOn(Graphics g) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -43,7 +41,5 @@ public class Checkpoint extends Obstacle{
 		if(player.getCheckpointNum() == 0 && checkpointNum == 1) {
 			player.setCheckpointNum(checkpointNum);
 		}
-		
 	}
-
 }

@@ -9,8 +9,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
-
-
 public abstract class Obstacle extends JComponent{
 	private int x, y;
 	private int length, height;
@@ -38,11 +36,7 @@ public abstract class Obstacle extends JComponent{
 	public BufferedImage getImage() {
 		return image;
 	}
-	
-	
-	
-	
-	
+
 	protected abstract void drawOn(Graphics g);
 		
 	protected abstract void collide(Vehicle player);

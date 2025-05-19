@@ -47,10 +47,7 @@ private boolean enterPressed;
 
 			}
 		});
-	
 	}
-	
-	
 	
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -58,7 +55,6 @@ private boolean enterPressed;
 		if(image != null) {
 			g.drawImage(image, 0, 0, this);
 		} else {
-			//setBackground(Color.RED);
 			g.setColor(Color.BLACK);
 			g.drawString("Image not Found", 100, 100);
 		}

@@ -18,7 +18,6 @@ public class Bush extends Obstacle{
 	private GamePanel panel;
 	public Bush(int x, int y, int length, int height) {
 		super(x,y,length,height);
-		
 		try {
 			image = ImageIO.read(new File("Final/src/images/bush.png"));
 		} catch (IOException e) {
@@ -32,9 +31,7 @@ public class Bush extends Obstacle{
 	
 	public void drawOn(Graphics g) {
 		if(image != null) {
-
 			g.drawImage(image, x, y, length, height, panel);
-			
 		}
 		else {
 			g.fillRect(x, y, length, height);

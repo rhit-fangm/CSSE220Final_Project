@@ -43,8 +43,6 @@ public class GamePanel extends JPanel {
 			image = null;
 		}
 		obstacles = new ObstacleComponent(frame);
-//		player1Item = new Empty();
-//		player2Item = new Empty();
 		player1.setItem(new Empty());
 		player2.setItem(new Empty());
 
@@ -85,6 +83,7 @@ public class GamePanel extends JPanel {
 				}
 			}
 		});
+		
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -143,8 +142,6 @@ public class GamePanel extends JPanel {
 			image = null;
 		}
 		obstacles = new ObstacleComponent(frame);
-//		player1Item = new Empty();
-//		player2Item = new Empty();
 		player2.setItem(new Empty());
 
 		frame.addKeyListener(new KeyAdapter() {
@@ -169,6 +166,7 @@ public class GamePanel extends JPanel {
 				}
 			}
 		});
+		
 		frame.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {

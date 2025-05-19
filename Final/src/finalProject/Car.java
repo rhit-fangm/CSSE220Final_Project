@@ -10,11 +10,13 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class Car extends Vehicle{
 	private int carNum;
 	private BufferedImage image;
 	private int x,y;
+	private int width, height;
 	private double angle;
 	private int velocity;
 	private int accel;
@@ -22,11 +24,13 @@ public class Car extends Vehicle{
 
 	private int maxSpeed;
 	
-	public Car(int x, int y, int carNum) {
-		super(x, y);
+	public Car(int x, int y, int carNum, JFrame frame) {
+		super(x, y, frame);
 		maxSpeed = 14;
 		accel = 2;
 		angle = 90;
+		width = (int) (frame.getWidth() * 0.05);
+		height = (int) (frame.getHeight() * 0.07);
 		this.carNum = carNum;
 		turningRadius = 4;
 		switch(carNum) {
@@ -58,7 +62,6 @@ public class Car extends Vehicle{
 		}
 	public BufferedImage getImage() {
 		return image;
-		
 	}
 		
 		@Override
@@ -67,15 +70,11 @@ public class Car extends Vehicle{
 			if(image != null) {
 				g.drawImage(image, x, y, this);
 			} else {
-				//setBackground(Color.RED);
 				g.setColor(Color.BLACK);
 				g.drawString("Image not Found", 100, 100);
 			}
-			
 		}
-	
 		
-			
 		public int getAccel() {
 			return accel;
 		}

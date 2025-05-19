@@ -63,22 +63,14 @@ public class GameMain {
 			}
 		});
 
-//		frame.add(obstacles);
-//		frame.add(mud);
-//		
-//		obstacles.drawStuff();
-		//frame.add(new MenuPanels(frame));
 		frame.setSize(1500, 800);
 
 		frame.pack();
-		frame.setLocationRelativeTo(null); // 2) center on screen
+		frame.setLocationRelativeTo(null);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.requestFocusInWindow();
-
-		// check pushing java file
-
 	}
 	public static void main(String[] args) {
 		new GameMain();
@@ -89,7 +81,7 @@ public class GameMain {
 		public void actionPerformed(ActionEvent e) {
 			String buttonLabel = e.getActionCommand();
 			if (buttonLabel.equals("Single Player")) {
-				player1 = new Car(0,0,1);
+				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, frame);
 				singlePlayerPanel = new GamePanel(player1, frame);
 				frame.remove(gameModelPanel);
 				frame.add(singlePlayerPanel);
@@ -98,8 +90,8 @@ public class GameMain {
 				frame.setVisible(true);
 			}
 			if (buttonLabel.equals("Double Players")) {
-				player1 = new Car(0,0,1);
-				player2 = new Car(50,50,2);
+				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, frame);
+				player2 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.235), 2, frame);
 				doublePlayersPanel = new GamePanel(player1, player2, frame);
 				frame.remove(gameModelPanel);
 				frame.add(doublePlayersPanel);
