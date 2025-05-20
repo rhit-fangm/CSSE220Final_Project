@@ -9,6 +9,7 @@ public class Checkpoint extends Obstacle{
 	public Checkpoint(int x, int y, int length, int height, int checkpointNum) {
 		super(x, y, length, height);
 		image = null;
+		this.checkpointNum = checkpointNum;
 	}
 
 	@Override
@@ -19,6 +20,7 @@ public class Checkpoint extends Obstacle{
 
 	@Override
 	protected void collide(Vehicle player) {
+		
 		if(player.getCheckpointNum() == 2 && checkpointNum == 3) {
 			player.incLapNum();
 			player.setCheckpointNum(0);
@@ -29,9 +31,11 @@ public class Checkpoint extends Obstacle{
 		}
 		if(player.getCheckpointNum() == 1 && checkpointNum == 2) {
 			player.setCheckpointNum(checkpointNum);
+		
 		}
 		if(player.getCheckpointNum() == 0 && checkpointNum == 1) {
 			player.setCheckpointNum(checkpointNum);
+			
 		}
 		
 	}

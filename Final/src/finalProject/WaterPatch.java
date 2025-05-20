@@ -8,12 +8,14 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Timer;
 
 public class WaterPatch extends Obstacle{
 
 	private int x, y;
 	private int length, height;
 	private BufferedImage image;
+	private Timer t;
 	
 	public WaterPatch(int x, int y, int length, int height) {
 		super(x,y,length,height);
@@ -23,6 +25,7 @@ public class WaterPatch extends Obstacle{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		t = null;
 	}
 	public BufferedImage getImage() {
 		return image;
@@ -44,10 +47,28 @@ public class WaterPatch extends Obstacle{
 
 	@Override
 	protected void collide(Vehicle player) {
+		
 		player.setTurningRadius(25);
-		//need timer
+		if(t==null) {
+			helpCollide(player);
+		}
+		if(!t.isRunning()) {
+			t.start();
+		}
+		
+		
 	}
-	
+	private void helpCollide(Vehicle player) {
+		t = new Timer(3000, e -> spin(player));
+	}
+	private void spin(Vehicle player) {
+		player.setTurningRadius(player.getOriginalTurningRadius());
+		t.stop();
+		
+		
+		
+
+	}
 	
 	
 }

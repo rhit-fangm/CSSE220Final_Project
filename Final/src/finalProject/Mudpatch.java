@@ -25,6 +25,7 @@ public class Mudpatch extends Obstacle{
 			// TODO Auto-generated catch block
 			System.out.println("no image");
 		}
+		t = null;
 	}
 	public BufferedImage getImage() {
 		return image;
@@ -46,14 +47,26 @@ public class Mudpatch extends Obstacle{
 	
 	@Override
 	protected void collide(Vehicle player) {
-		t = new Timer(2000, e -> slow5(player));
+		
 		player.setMaxSpeed(5);
+		if(t==null) {
+			helpCollide(player);
+		}
+		if(!t.isRunning()) {
+			t.start();
+		}
 		
 		
 	}
-	private void slow5(Vehicle player) {
-		t = null;
-		player.setMaxSpeed(player.getMaxSpeed()*2);
+	private void helpCollide(Vehicle player) {
+		t = new Timer(2000, e -> slow(player));
+	}
+	private void slow(Vehicle player) {
+		player.setMaxSpeed(player.getOriginalMaxSpeed());
+		t.stop();
+		
+		
+		
 
 	}
 	

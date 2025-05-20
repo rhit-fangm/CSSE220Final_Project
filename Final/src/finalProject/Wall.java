@@ -42,6 +42,7 @@ public class Wall extends Obstacle{
 	protected void collide(Vehicle player) {
 		player.changeX(-player.getVelocity()*Math.cos(Math.toRadians(player.getAngle())));
 		player.changeY(-player.getVelocity()*Math.sin(Math.toRadians(player.getAngle())));
+		player.changeVelocity(-player.getVelocity());
 		
 	}
 	public double getAngle() {

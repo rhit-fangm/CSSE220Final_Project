@@ -1,3 +1,5 @@
+
+
 package finalProject;
 
 import java.awt.Color;
@@ -9,25 +11,33 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 public class Car extends Vehicle{
 	private int carNum;
 	private BufferedImage image;
 	private int x,y;
+	private int width, height;
 	private double angle;
 	private int velocity;
 	private int accel;
 	private int turningRadius;
-
-	private int maxSpeed;
+	private int lapNum, checkpointNum;
 	
-	public Car(int x, int y, int carNum) {
-		super(x, y);
-		maxSpeed = 14;
+	private int maxSpeed, originalMaxSpeed;
+	private int originalTurningRadius;
+	
+	public Car(int x, int y, int carNum, JFrame frame) {
+		super(x, y, frame);
+		maxSpeed = 10;
+		originalMaxSpeed = maxSpeed;
 		accel = 2;
 		angle = 90;
+		width = (int) (frame.getWidth() * 0.05);
+		height = (int) (frame.getHeight() * 0.07);
 		this.carNum = carNum;
 		turningRadius = 4;
+		originalTurningRadius = turningRadius;
 		switch(carNum) {
 			case 1: try {
 				image = ImageIO.read(new File("src/images/blueCar.png"));
@@ -57,7 +67,6 @@ public class Car extends Vehicle{
 		}
 	public BufferedImage getImage() {
 		return image;
-		
 	}
 		
 		@Override
@@ -66,15 +75,11 @@ public class Car extends Vehicle{
 			if(image != null) {
 				g.drawImage(image, x, y, this);
 			} else {
-				//setBackground(Color.RED);
 				g.setColor(Color.BLACK);
 				g.drawString("Image not Found", 100, 100);
 			}
-			
 		}
-	
 		
-			
 		public int getAccel() {
 			return accel;
 		}
@@ -85,6 +90,11 @@ public class Car extends Vehicle{
 		public void setMaxSpeed(int speed) {
 			maxSpeed = speed;
 		}
+		public int getOriginalMaxSpeed() {
+			// TODO Auto-generated method stub
+			return originalMaxSpeed;
+		}
+
 		
 		public int getTurningRadius() {
 			return turningRadius;
@@ -92,6 +102,26 @@ public class Car extends Vehicle{
 
 		public void setTurningRadius(int turningRadius) {
 			this.turningRadius = turningRadius;
+		}
+		public int getOriginalTurningRadius() {
+			// TODO Auto-generated method stub
+			return originalTurningRadius;
+		}
+
+		public int getLapNum() {
+			return lapNum;
+		}
+
+		public void incLapNum() {
+			lapNum++;
+		}
+
+		public int getCheckpointNum() {
+			return checkpointNum;
+		}
+
+		public void setCheckpointNum(int num) {
+			checkpointNum = num;
 		}
 		
 }

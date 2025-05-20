@@ -1,3 +1,4 @@
+
 package finalProject;
 
 import java.awt.Graphics;
@@ -7,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Vehicle extends JComponent{
@@ -15,16 +17,17 @@ public class Vehicle extends JComponent{
 	private int velocity;
 	private double angle;
 	private int accel;
-	private int maxSpeed;
+	private int maxSpeed, originalMaxSpeed;
 	private AbstractItem item;
 	private int turningRadius;
 	private int lapNum, checkpointNum;
+	private int originalTurningRadius;
 	
-	public Vehicle(int x, int y) {
+	public Vehicle(int x, int y, JFrame frame) {
 		this.x =x;
 		this.y = y;
-		width = 100;
-		height = 60;
+		width = (int) (frame.getWidth() * 0.05);
+		height = (int) (frame.getHeight() * 0.07);
 		velocity = 0;
 		item = null;
 		
@@ -158,6 +161,16 @@ public class Vehicle extends JComponent{
 
 	public void setCheckpointNum(int num) {
 		checkpointNum = num;
+	}
+
+	public int getOriginalMaxSpeed() {
+		// TODO Auto-generated method stub
+		return originalMaxSpeed;
+	}
+
+	public int getOriginalTurningRadius() {
+		// TODO Auto-generated method stub
+		return originalTurningRadius;
 	}
 
 	

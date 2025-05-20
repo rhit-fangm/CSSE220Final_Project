@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Motorcycle extends Vehicle{
 
@@ -18,8 +20,8 @@ public class Motorcycle extends Vehicle{
 	private int accel;
 	private int WIDTH,HEIGHT;
 	
-	public Motorcycle(int x, int y, int motorNum) {
-		super(x, y);
+	public Motorcycle(int x, int y, int motorNum, JFrame frame) {
+		super(x, y, frame);
 		this.motorNum = motorNum;
 		switch(motorNum) {
 			case 1: try {
