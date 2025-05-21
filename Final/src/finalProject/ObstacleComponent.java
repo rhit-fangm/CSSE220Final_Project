@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 
 public class ObstacleComponent extends JComponent {
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
+	private ArrayList<Obstacle> removed = new ArrayList<>();
+	
 
 	public ObstacleComponent(JFrame frame) {
 		Obstacle bush1 = new Bush((int) (frame.getWidth() * 0.54), (int) (frame.getHeight() * 0.05),
@@ -95,8 +97,10 @@ public class ObstacleComponent extends JComponent {
 						obstacle.getHeight(), this);
 			} 
 		}
+		
 	}
-
+	
+	
 	public void handleCollision(Vehicle player) {
 		for (Obstacle obstacle : obstacles) {
 			double shrinkFactor = 0.99;
@@ -112,20 +116,31 @@ public class ObstacleComponent extends JComponent {
 				
 				if (boundingBox.intersects(player.getBoundingBox())) {
 					obstacle.collide(player);
-
+					if(obstacle instanceof BananaObstacle || obstacle instanceof OilObstacle) {
+						removed.add(obstacle);
+					}
 				}
+				
 
 			// System.out.println(obstacle.overlaps(player));
 
 		}
+		for(Obstacle obstacle : removed) {
+			obstacles.remove(obstacle);
+		}
+		
 	}
+
+	
+	
 
 	public ArrayList<Obstacle> getObstacles() {
 		return obstacles;
 	}
 
-	public void addItem(Vehicle player) {
-
+	public void addObstacle(Obstacle obstacle) {
+		obstacles.add(obstacle);
 	}
+	
 
 }

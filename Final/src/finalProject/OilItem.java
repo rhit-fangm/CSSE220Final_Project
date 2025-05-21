@@ -8,13 +8,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class ShellItem extends AbstractItem{
+public class OilItem extends AbstractItem{
 	private int id = 1;
 	private BufferedImage image; 
-	public ShellItem() {
+	public OilItem() {
 		
 		try {
-			image = ImageIO.read(new File("src/images/greenShellItem.png"));
+			image = ImageIO.read(new File("src/images/oilSpillItem.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

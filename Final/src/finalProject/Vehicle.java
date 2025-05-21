@@ -22,12 +22,13 @@ public class Vehicle extends JComponent{
 	private int turningRadius;
 	private int lapNum, checkpointNum;
 	private int originalTurningRadius;
+	private JFrame frame;
 	
 	public Vehicle(int x, int y, JFrame frame) {
 		this.x =x;
 		this.y = y;
-		width = (int) (frame.getWidth() * 0.05);
-		height = (int) (frame.getHeight() * 0.07);
+		width = (int) (frame.getWidth() * 0.04);
+		height = (int) (frame.getHeight() * 0.05);
 		velocity = 0;
 		item = null;
 		
@@ -118,8 +119,8 @@ public class Vehicle extends JComponent{
 	public void useItem() {
 		switch(item.getId()) {
 		case 0:break;
-		case 1: System.out.println("shell");/*throw shell  */ break;
-		case 2: System.out.println("banana");/*place banana  */ break;
+		case 1:  /*throw shell  */ break;
+		case 2: /*place banana  */ break;
 		case 3: changeVelocity(20); break;
 		}
 		

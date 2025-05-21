@@ -229,6 +229,18 @@ public class GamePanel extends JPanel {
 		}
 		
 		if (p1Item) {
+			if(player1.getItem().getId() == 1) {
+				obstacles.addObstacle(new OilObstacle((int) (player1.getX()-2*(player1.getWidth() * Math.cos(Math.toRadians(player1.getAngle())))),
+						(int) (player1.getY()-2*(player1.getHeight() * Math.sin(Math.toRadians(player1.getAngle())))), 35, 35 ));
+				
+				player1.setItem(new Empty());
+			}
+			if(player1.getItem().getId() == 2) {
+				obstacles.addObstacle(new BananaObstacle((int) (player1.getX()-2*(player1.getWidth() * Math.cos(Math.toRadians(player1.getAngle())))),
+						(int) (player1.getY()-2*(player1.getHeight() * Math.sin(Math.toRadians(player1.getAngle())))), 25, 25 ));
+				player1.setItem(new Empty());
+				System.out.println("adding banana");
+			}
 			if (player1.getItem() != null) {
 				player1.useItem();
 				player1.setItem(new Empty());
@@ -265,8 +277,23 @@ public class GamePanel extends JPanel {
 		if (player2.getVelocity() > 0) {
 			player2.changeVelocity(-1);
 		}
+		if (player2.getVelocity() < 0) {
+			player2.changeVelocity(1);
+		}
 
 		if (p2Item) {
+			if(player2.getItem().getId() == 1) {
+				obstacles.addObstacle(new OilObstacle((int) (player2.getX()-2*(player2.getWidth() * Math.cos(Math.toRadians(player2.getAngle())))),
+						(int) (player2.getY()-2*(player2.getHeight() * Math.sin(Math.toRadians(player2.getAngle())))), 35, 35 ));
+				
+				player2.setItem(new Empty());
+			}
+			if(player2.getItem().getId() == 2) {
+				obstacles.addObstacle(new BananaObstacle((int) (player2.getX()-2*player2.getWidth() * Math.cos(Math.toRadians(player2.getAngle()))),
+						(int) (player2.getY()-2*(player2.getHeight() * Math.sin(Math.toRadians(player2.getAngle())))), 25, 25 ));
+				player2.setItem(new Empty());
+				System.out.println("adding banana");
+			}
 			if (player2.getItem() != null) {
 				player2.useItem();
 				player2.setItem(new Empty());
@@ -278,7 +305,7 @@ public class GamePanel extends JPanel {
 		
 		obstacles.handleCollision(player2);
 		}
-		
+	
 		repaint();
 	}
 
