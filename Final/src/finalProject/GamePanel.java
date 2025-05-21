@@ -239,7 +239,7 @@ public class GamePanel extends JPanel {
 				obstacles.addObstacle(new BananaObstacle((int) (player1.getX()-2*(player1.getWidth() * Math.cos(Math.toRadians(player1.getAngle())))),
 						(int) (player1.getY()-2*(player1.getHeight() * Math.sin(Math.toRadians(player1.getAngle())))), 25, 25 ));
 				player1.setItem(new Empty());
-				System.out.println("adding banana");
+				
 			}
 			if (player1.getItem() != null) {
 				player1.useItem();
@@ -292,7 +292,7 @@ public class GamePanel extends JPanel {
 				obstacles.addObstacle(new BananaObstacle((int) (player2.getX()-2*player2.getWidth() * Math.cos(Math.toRadians(player2.getAngle()))),
 						(int) (player2.getY()-2*(player2.getHeight() * Math.sin(Math.toRadians(player2.getAngle())))), 25, 25 ));
 				player2.setItem(new Empty());
-				System.out.println("adding banana");
+				
 			}
 			if (player2.getItem() != null) {
 				player2.useItem();
