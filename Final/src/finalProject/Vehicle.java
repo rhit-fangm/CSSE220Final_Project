@@ -22,15 +22,17 @@ public class Vehicle extends JComponent{
 	private int turningRadius;
 	private int lapNum, checkpointNum;
 	private int originalTurningRadius;
+	private int playerNum;
 	private JFrame frame;
 	
-	public Vehicle(int x, int y, JFrame frame) {
+	public Vehicle(int x, int y, int player, JFrame frame) {
 		this.x =x;
 		this.y = y;
 		width = (int) (frame.getWidth() * 0.04);
 		height = (int) (frame.getHeight() * 0.05);
 		velocity = 0;
 		item = null;
+		playerNum = player;
 		
 		
 		
@@ -173,6 +175,12 @@ public class Vehicle extends JComponent{
 		// TODO Auto-generated method stub
 		return originalTurningRadius;
 	}
+
+	public int getPlayerNum() {
+		return playerNum;
+	}
+
+	
 
 	
 

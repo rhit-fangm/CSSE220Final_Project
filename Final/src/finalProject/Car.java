@@ -27,8 +27,8 @@ public class Car extends Vehicle{
 	private int maxSpeed, originalMaxSpeed;
 	private int originalTurningRadius;
 	
-	public Car(int x, int y, int carNum, JFrame frame) {
-		super(x, y, frame);
+	public Car(int x, int y, int player, int carNum, JFrame frame) {
+		super(x, y, player, frame);
 		maxSpeed = 10;
 		originalMaxSpeed = maxSpeed;
 		accel = 2;

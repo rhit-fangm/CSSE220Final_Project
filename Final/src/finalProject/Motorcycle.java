@@ -20,8 +20,8 @@ public class Motorcycle extends Vehicle{
 	private int accel;
 	private int WIDTH,HEIGHT;
 	
-	public Motorcycle(int x, int y, int motorNum, JFrame frame) {
-		super(x, y, frame);
+	public Motorcycle(int x, int y, int motorNum, int player, JFrame frame) {
+		super(x, y, player, frame);
 		this.motorNum = motorNum;
 		switch(motorNum) {
 			case 1: try {

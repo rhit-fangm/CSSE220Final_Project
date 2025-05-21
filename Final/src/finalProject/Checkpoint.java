@@ -26,7 +26,7 @@ public class Checkpoint extends Obstacle{
 			player.setCheckpointNum(0);
 			System.out.println(player.getLapNum());
 			if(player.getLapNum() == 3) {
-				System.out.println("you win");
+				System.out.println("Player " + player.getPlayerNum() + " WINS!!!!!!!");
 			}
 		}
 		if(player.getCheckpointNum() == 1 && checkpointNum == 2) {

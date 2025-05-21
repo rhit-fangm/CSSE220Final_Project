@@ -22,7 +22,7 @@ public class ObstacleComponent extends JComponent {
 				(int) (frame.getWidth() * 0.1), (int) (frame.getWidth() * 0.1));
 		Obstacle bush2 = new Bush((int) (frame.getWidth() * 0.55), (int) (frame.getHeight() * 0.28),
 				(int) (frame.getWidth() * 0.07), (int) (frame.getWidth() * 0.07));
-		Obstacle mud1 = new Mudpatch((int) (frame.getWidth() * 0.57), (int) (frame.getHeight() * 0.2),
+		Obstacle mud1 = new Mudpatch((int) (frame.getWidth() * 0.55), (int) (frame.getHeight() * 0.2),
 				(int) (frame.getWidth() * 0.08), (int) (frame.getWidth() * 0.08));
 		Obstacle mud2 = new Mudpatch((int) (frame.getWidth() * 0.435), (int) (frame.getHeight() * 0.77),
 				(int) (frame.getWidth() * 0.1), (int) (frame.getWidth() * 0.1));

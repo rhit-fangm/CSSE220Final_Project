@@ -82,7 +82,7 @@ public class GameMain {
 		public void actionPerformed(ActionEvent e) {
 			String buttonLabel = e.getActionCommand();
 			if (buttonLabel.equals("Single Player")) {
-				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, frame);
+				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, 1, frame);
 				singlePlayerPanel = new GamePanel(player1, frame);
 				frame.remove(gameModelPanel);
 				frame.add(singlePlayerPanel);
@@ -91,8 +91,8 @@ public class GameMain {
 				frame.setVisible(true);
 			}
 			if (buttonLabel.equals("Double Players")) {
-				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, frame);
-				player2 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.235), 2, frame);
+				player1 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.155), 1, 1, frame);
+				player2 = new Car((int) (frame.getWidth() * 0.25), (int) (frame.getHeight() * 0.235), 2, 2, frame);
 				doublePlayersPanel = new GamePanel(player1, player2, frame);
 				frame.remove(gameModelPanel);
 				frame.add(doublePlayersPanel);
