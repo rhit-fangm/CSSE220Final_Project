@@ -30,7 +30,7 @@ public class Car extends Vehicle{
 	public Car(int x, int y, int player, int carNum, JFrame frame) {
 		super(x, y, player, frame);
 		maxSpeed = 10;
-		originalMaxSpeed = maxSpeed;
+		
 		accel = 2;
 		angle = 90;
 		width = (int) (frame.getWidth() * 0.05);
@@ -46,24 +46,45 @@ public class Car extends Vehicle{
 				e.printStackTrace();
 			} break;
 			case 2: try {
-				image = ImageIO.read(new File("src/images/purpleCar.png"));
-			} catch (IOException e) {
-				image = null;
-				e.printStackTrace();
-			} break;
-			case 3: try {
-				image = ImageIO.read(new File("src/images/whiteCar.png"));
-			} catch (IOException e) {
-				image = null;
-				e.printStackTrace();
-			} break;
-			case 4: try {
 				image = ImageIO.read(new File("src/images/brownCar.png"));
 			} catch (IOException e) {
 				image = null;
 				e.printStackTrace();
 			} break;
+			case 3: try {
+				image = ImageIO.read(new File("src/images/purpleCar.png"));
+			} catch (IOException e) {
+				image = null;
+				e.printStackTrace();
+			} break;
+			case 4: try {
+				image = ImageIO.read(new File("src/images/whiteCar.png"));
+			} catch (IOException e) {
+				image = null;
+				e.printStackTrace();
+			} break;
+			case 5: 
+				maxSpeed = 30;
+				accel = 5;
+				turningRadius = 3;
+				try {
+				image = ImageIO.read(new File("src/images/redRaceCar.png"));
+			} catch (IOException e) {
+				image = null;
+				e.printStackTrace();
+			} break;
+			case 6: 
+				maxSpeed = 20;
+				accel = 4;
+				turningRadius = 6;
+				try {
+				image = ImageIO.read(new File("src/images/yellowSuperCar.png"));
+			} catch (IOException e) {
+				image = null;
+				e.printStackTrace();
+			} break;
 		}
+		originalMaxSpeed = maxSpeed;
 		}
 	public BufferedImage getImage() {
 		return image;

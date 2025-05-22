@@ -23,7 +23,7 @@ public class OilObstacle extends Obstacle{
 		public OilObstacle(int x, int y, int length, int height) {
 			super(x,y,length,height);
 			try {
-				image = ImageIO.read(new File("src/images/mudPatch.png"));
+				image = ImageIO.read(new File("src/images/OilSpillObstacle.png"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("no image");

@@ -18,7 +18,7 @@ public class BananaObstacle extends Obstacle{
 		super(x,y,length,height);
 		
 		try {
-			image = ImageIO.read(new File("src/images/bananaPeelItem.png"));
+			image = ImageIO.read(new File("src/images/bananaObstacle.png"));
 		} catch (IOException e) {
 			System.out.println("image does not exist");
 			e.printStackTrace();
