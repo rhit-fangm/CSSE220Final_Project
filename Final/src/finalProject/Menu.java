@@ -22,7 +22,7 @@ public class Menu extends JPanel {
         }
 
         // Create and add the start button
-        startButton = new JButton("Start Game");
+        startButton = new JButton("View Map");
         singlePlayer = new JButton("Single Player");
         doublePlayer = new JButton("Double Player");
         guide = new JButton("Guide");

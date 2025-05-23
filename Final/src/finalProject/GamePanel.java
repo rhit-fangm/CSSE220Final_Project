@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel {
-	private BufferedImage image;
+	private BufferedImage image, p1Wins, p2Wins;
 	private JFrame frame;
 	private Vehicle player1;
 	private Vehicle player2;
@@ -38,6 +38,20 @@ public class GamePanel extends JPanel {
 		setPreferredSize(new Dimension(1530, 1080));
 		try {
 			image = ImageIO.read(new File("src/images/map1.png"));
+		} catch (IOException e) {
+			System.err.println("Caught: " + e.getMessage());
+			e.printStackTrace();
+			image = null;
+		}
+		try {
+			p1Wins = ImageIO.read(new File("src/images/player1Wins.png"));
+		} catch (IOException e) {
+			System.err.println("Caught: " + e.getMessage());
+			e.printStackTrace();
+			image = null;
+		}
+		try {
+			p2Wins = ImageIO.read(new File("src/images/player2Wins.png"));
 		} catch (IOException e) {
 			System.err.println("Caught: " + e.getMessage());
 			e.printStackTrace();
@@ -304,15 +318,25 @@ public class GamePanel extends JPanel {
 		player2.changeY(player2.getVelocity() * Math.sin(Math.toRadians(player2.getAngle())));
 		
 		obstacles.handleCollision(player2);
+		
 		}
 	
 		repaint();
 	}
+	
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (image != null) {
+		if(player1 != null) {
+			if(player1.getLapNum()==3) {
+				g.drawImage(p1Wins, 0, 0, getWidth(), getHeight(), this);
+			}	
+		}
+		else if(player2.getLapNum()==3) {
+			g.drawImage(p2Wins, 0, 0, getWidth(), getHeight(), this);
+		}
+		else if (image != null) {
 			// drawing background
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			obstacles.drawStuff(g);
