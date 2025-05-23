@@ -333,7 +333,7 @@ public class GamePanel extends JPanel {
 				g.drawImage(p1Wins, 0, 0, getWidth(), getHeight(), this);
 			}	
 		}
-		else if(player2.getLapNum()==3) {
+		if(player2.getLapNum()==3) {
 			g.drawImage(p2Wins, 0, 0, getWidth(), getHeight(), this);
 		}
 		else if (image != null) {
